@@ -2,6 +2,8 @@
 
 在程序运行过程中，其值不可以改变的量
 
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/常量分类.png)
+
 ![avatar](image\常量分类.png)
 
 空常量不能被直接输出，其他类型的常量可以直接输出
