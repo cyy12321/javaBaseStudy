@@ -394,3 +394,81 @@ public static void main(String[] args) {
 
 }
 ```
+
+### 9.for循环
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/for循环格式.png)
+
+![avatar](image\for循环格式.png)
+
+(1)在控制台输出5次HelloWorld!
+
+```java
+public static void main(String[] args) {
+    //在控制台输出5次HelloWord!
+    for(int i = 0;i<5;i++){
+        System.out.println("HelloWorld!");
+    }
+}
+```
+
+(2)在控制台输出1-5和5-1的语句
+
+```java
+//输出1-5
+for(int a = 1;a<=5;a++){
+    System.out.println(a);
+}
+System.out.println("-------------");
+//输出5-1
+for(int b = 5;b>=1;b--){
+    System.out.println(b);
+}
+```
+
+(3)求1-5之间的数据和，并把求和结果在控制台输出
+
+```java
+int sum = 0;
+for(int i = 1;i<=5;i++){
+    sum += i;//sum=sum+i
+}
+System.out.println("1-5的数据加和："+sum);
+```
+
+(4)求1-100之间的偶数和，并把求和结果在控制台输出
+
+```java
+//求1-100之间的偶数和，并把求和结果在控制台输出
+int ouSum = 0;
+for(int i = 1;i<=100;i++){
+    if(i%2==0){//偶数
+        ouSum += i;//ouSum=ouSum+i
+    }
+}
+System.out.println("1-100之间的偶数和是："+ouSum);
+```
+
+### 10.for循环-水仙花数
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/水仙花数.png)
+
+![avatar](image\水仙花数.png)
+
+需求：在控制台输出所有的”水仙花数“
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/水仙花数分析.png)
+
+![avatar](image\水仙花数分析.png)
+
+```java
+for(int i = 100;i<1000;i++){
+    int a = i%10;//个位数
+    int b = i/10%10;//十位数
+    int c = i/100;//百位数
+    if(i==a*a*a+b*b*b+c*c*c){
+        System.out.println(i);
+    }
+}
+```
+
