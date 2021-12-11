@@ -26,6 +26,8 @@ System.out.println(null);   //错误，空常量不能被直接输出
 
 把一个表示数据<u>范围小的数值或者变量</u>赋值给另一个表示<u>数据范围大的变量</u>；如：double d = 10;  <!--d值输出为10.0-->
 
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/自动类型转换.png)
+
 ![avatar](image\自动类型转换.png)
 
 (2)强制类型转换
@@ -63,6 +65,8 @@ public class OperateDemo {
 
 拿字符在计算机底层<u>对应的的数值</u>来进行计算的
 
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/字符+.png)
+
 ![avator](image\字符+.png)
 
 算术表达式中包含<u>多个基本数据类型</u>的值的时候，整个算术表达式的类型会<u>自动进行提升</u>
@@ -72,6 +76,8 @@ public class OperateDemo {
 byte类型，short类型和char类型将被提升到int类型
 
 整个表达式的类型<u>自动提升</u>到表达式中<u>最高等级</u>操作数同样的类型
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/基本数据类型等级顺序.png)
 
 ![avator](image\基本数据类型等级顺序.png)
 
@@ -94,6 +100,8 @@ public class ConversionDemo002 {
 
 #### (4)赋值运算符
 
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/赋值运算符.png)
+
 ![avator](image\赋值运算符.png)
 
 注意：（红色标记）扩展的赋值运算符**隐含**了强制类型转换
@@ -103,6 +111,8 @@ short s = 10;
 s =(short) s+20;相当于 s += 20;  
 
 #### (5)自增自减运算符
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/自增自减.png)
 
 ![avator](image\自增自减.png)
 
@@ -114,6 +124,8 @@ s =(short) s+20;相当于 s += 20;
 
 #### (6)关系运算符
 
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/关系运算符.png)
+
 ![avator](image\关系运算符.png)
 
 关系运算符的结果都是boolean类型，要么是true,要么是false。
@@ -121,6 +133,8 @@ s =(short) s+20;相当于 s += 20;
 千万不要把“==”误写成“=”
 
 #### (7)逻辑运算符
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/逻辑运算符.png)
 
 ![avator](image\逻辑运算符.png)
 
@@ -135,6 +149,8 @@ s =(short) s+20;相当于 s += 20;
 逻辑异或 ^ 不同为true，相同为false
 
 #### (8)短路逻辑运算符
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/短路逻辑运算符.png)
 
 ![avator](image\短路逻辑运算符.png)
 
