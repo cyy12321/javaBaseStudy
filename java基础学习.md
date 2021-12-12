@@ -20,6 +20,18 @@ System.out.println(null);   //错误，空常量不能被直接输出
 
 大驼峰是给类命名的，如GoodStudent
 
+### 3.数据类型
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/数据类型.png)
+
+![avatar](image\数据类型.png)
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/数据类型1.png)
+
+![avatar](image\数据类型1.png)
+
+**整数默认是int**类型，**浮点数默认是double**类型
+
 ### 3.类型转换
 
 (1)自动类型转换
@@ -455,7 +467,7 @@ System.out.println("1-100之间的偶数和是："+ouSum);
 
 ![avatar](image\水仙花数.png)
 
-需求：在控制台输出所有的”水仙花数“
+（1)需求：在控制台输出所有的”水仙花数“
 
 ![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/水仙花数分析.png)
 
@@ -466,9 +478,132 @@ for(int i = 100;i<1000;i++){
     int a = i%10;//个位数
     int b = i/10%10;//十位数
     int c = i/100;//百位数
-    if(i==a*a*a+b*b*b+c*c*c){
-        System.out.println(i);
+    if(a*a*a+b*b*b+c*c*c==i){
+        System.out.println(i);//153、370、371、407
     }
+}
+```
+
+（2）需求：统计“水仙花数”一共有多少个，并在控制台输出个数
+
+```java
+int count = 0;
+for(int i = 100;i<1000;i++){
+    int a = i%10;//个位数
+    int b = i/10%10;//十位数
+    int c = i/100;//百位数
+    if(a*a*a+b*b*b+c*c*c==i){
+        count++;
+    }
+}
+System.out.println("水仙花数的个数为："+count);
+//水仙花数的个数为：4
+```
+
+### 11.while循环语句
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/while循环语句格式.png)
+
+![avatar](image\while循环语句格式.png)
+
+（1）在控制台输出5次HelloWorld!
+
+```java
+public static void main(String[] args) {
+    //在控制台输出5次HelloWorld!
+    //for循环实现
+    for(int i = 0;i<5;i++){
+        System.out.println("HelloWorld!");
+    }
+    System.out.println("--------");
+    
+    //while循环实现
+    int j=1;//1.初始化语句
+    while(j<=5){//2.条件判断语句
+        System.out.println("HelloWorld!");//3.循环体语句
+        j++;//4.条件控制语句
+    }
+}
+```
+
+### 12.while循环-珠穆朗玛峰
+
+需求：世界上最高山峰是珠穆朗玛峰（8848.43米=8844430毫米），假如我有一张足够大的纸，它的厚度是0.1毫米。请问，我折叠多少次，可以折成珠穆朗玛峰的高度？
+
+```java
+public static void main(String[] args) {
+    //世界上最高山峰是珠穆朗玛峰（8848.43米=8844430毫米），假如我有一张足够大的纸，它的厚度是0.1毫米。
+    // 请问，我折叠多少次，可以折成珠穆朗玛峰的高度
+    //折叠1次，0.1*2
+    //折叠2次，0.1*2*2
+    //折叠3次，0.1*2*2*2
+    int count = 0;//定义一个计数器，初始值为0
+    double paper = 0.1;//定义纸张厚度
+    int zf = 8844430;//定义珠穆朗玛峰的高度
+    while(paper<=zf){
+        paper *= 2;//*=隐含强制类型转换
+        count++;
+    }
+    System.out.println("需要折叠："+count+"次");
+}
+```
+
+### 13.do...while循环语句
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/do...while循环语句格式.png)
+
+![avatar](image\do...while循环语句格式.png)
+
+（1）在控制台输出5次HelloWorld!
+
+```java
+public static void main(String[] args) {
+    //需求：在控制台输出5次"HelloWorld!"
+    //for循环实现
+    for(int i = 0;i<5;i++){
+        System.out.println("HelloWorld!");
+    }
+    
+    System.out.println("--------");
+    
+    //do...while循环实现
+    int j = 0;//初始化语句
+    do{
+        System.out.println("HelloWorld!");
+        j++;
+    }while(j<5);
+}
+```
+
+### 14.三种循环的区别
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/三种循环的区别.png)
+
+![avatar](image\三种循环的区别.png)
+
+### 15.跳转控制语句
+
+**continue**用于循环中，基于条件控制，跳过某次循环体内容的执行，继续下一次的执行
+
+**break** 用在循环中，基于条件控制，终止循环体内容的执行，也就是说结束当前的整个循环
+
+```java
+public static void main(String[] args) {
+    for(int i=1;i<=5;i++){
+        if(i%2==0){//是否偶数
+            continue;//跳过某次循环，继续下一次循环 
+        }
+        System.out.println(i);//跳过偶数，输出1、3、5
+    }  
+}
+```
+
+```java
+for(int i=1;i<=5;i++){
+    if(i%2==0){//是否偶数
+        break;//终止循环
+    }
+    System.out.println(i);//遇到偶数，终止循环，只输出1
 }
 ```
 
