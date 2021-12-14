@@ -607,3 +607,55 @@ for(int i=1;i<=5;i++){
 }
 ```
 
+### 16.循环嵌套
+
+在控制台输出一天的小时和分钟
+
+```java
+public static void main(String[] args) {
+    //在控制台输出一天的小时和分钟
+    //分钟：0<=minute<60
+    //小时：0<=hour<24
+    //外循环控制小时的范围，内循环控制分钟的范围
+    for(int hour = 0;hour<24;hour++){
+        for(int minter=0;minter<60;minter++){
+            System.out.println(hour+"时"+minter+"分");
+        }
+    }
+}
+//输出结果：
+    0时0分
+    0时1分
+    0时2分
+    ...
+    0时59分
+    1时0分
+    ...
+    23时59分
+```
+
+### 17.Random
+
+用于产生一个随机数 
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/Random随机数.png)
+
+![avatar](image\Random随机数.png)
+
+```java
+import java.util.Random;//1.导包
+public class RandomDemo {
+    public static void main(String[] args) {
+       Random r = new Random();//2.创建对象
+        //用循环获取10个随机数
+        for(int i=0;i<10;i++){
+            int number = r.nextInt(10);//获取随机数
+            System.out.println("number"+number);
+        }
+        System.out.println("--------");
+        //需求：获取一个1-100之间的随机数
+        int num = r.nextInt(100)+1;//0-99,不包括100，可+1
+        System.out.println("num:"+num);
+    }
+}
+```
