@@ -642,6 +642,8 @@ public static void main(String[] args) {
 
 ![avatar](image\Random随机数.png)
 
+(1)
+
 ```java
 import java.util.Random;//1.导包
 public class RandomDemo {
@@ -659,3 +661,29 @@ public class RandomDemo {
     }
 }
 ```
+
+(2)程序自动生成一个1-100之间的数字，使用程序实现猜出这个数字是多少？
+
+```java
+//程序自动生成一个1-100之间的数字，使用程序实现猜出这个数字是多少？
+//猜的数字比真实数字大，提示猜大了
+//猜的数字比真实数字小，提示猜小了
+//猜的数字与真实数字相等，提示猜中了
+Random random = new Random();
+int factNum = random.nextInt(100)+1;
+System.out.println("生成的随机数为:"+factNum);
+while (true){
+    Scanner sc = new Scanner(System.in);
+    System.out.println("请输入你要猜的数字：");
+    int guessNum = sc.nextInt();
+    if(guessNum>factNum){
+        System.out.println("你猜的数字"+guessNum+"大了");
+    }else if(guessNum<factNum){
+        System.out.println("你猜的数字"+guessNum+"小了");
+    }else{
+        System.out.println("猜中了");
+        break;
+    }
+}
+```
+
