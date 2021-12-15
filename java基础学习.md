@@ -607,3 +607,348 @@ for(int i=1;i<=5;i++){
 }
 ```
 
+### 16.循环嵌套
+
+在控制台输出一天的小时和分钟
+
+```java
+public static void main(String[] args) {
+    //在控制台输出一天的小时和分钟
+    //分钟：0<=minute<60
+    //小时：0<=hour<24
+    //外循环控制小时的范围，内循环控制分钟的范围
+    for(int hour = 0;hour<24;hour++){
+        for(int minter=0;minter<60;minter++){
+            System.out.println(hour+"时"+minter+"分");
+        }
+    }
+}
+//输出结果：
+    0时0分
+    0时1分
+    0时2分
+    ...
+    0时59分
+    1时0分
+    ...
+    23时59分
+```
+
+### 17.Random
+
+用于产生一个随机数 
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/Random随机数.png)
+
+![avatar](image\Random随机数.png)
+
+(1)
+
+```java
+import java.util.Random;//1.导包
+public class RandomDemo {
+    public static void main(String[] args) {
+       Random r = new Random();//2.创建对象
+        //用循环获取10个随机数
+        for(int i=0;i<10;i++){
+            int number = r.nextInt(10);//获取随机数
+            System.out.println("number"+number);
+        }
+        System.out.println("--------");
+        //需求：获取一个1-100之间的随机数
+        int num = r.nextInt(100)+1;//0-99,不包括100，可+1
+        System.out.println("num:"+num);
+    }
+}
+```
+
+(2)程序自动生成一个1-100之间的数字，使用程序实现猜出这个数字是多少？
+
+```java
+//程序自动生成一个1-100之间的数字，使用程序实现猜出这个数字是多少？
+//猜的数字比真实数字大，提示猜大了
+//猜的数字比真实数字小，提示猜小了
+//猜的数字与真实数字相等，提示猜中了
+Random random = new Random();
+int factNum = random.nextInt(100)+1;
+System.out.println("生成的随机数为:"+factNum);
+while (true){
+    Scanner sc = new Scanner(System.in);
+    System.out.println("请输入你要猜的数字：");
+    int guessNum = sc.nextInt();
+    if(guessNum>factNum){
+        System.out.println("你猜的数字"+guessNum+"大了");
+    }else if(guessNum<factNum){
+        System.out.println("你猜的数字"+guessNum+"小了");
+    }else{
+        System.out.println("猜中了");
+        break;
+    }
+}
+```
+
+### 18.IDEA创建程序步骤
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/IDEA创建程序步骤.png)
+
+![avatar](image\IDEA创建程序步骤.png)
+
+### 19.数组
+
+#### （1）数组定义格式
+
+数组（array)是一种用于存储**多个**`相同类型`数据的存储模型
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/数组定义格式.png)
+
+![avatar](image\数组定义格式.png)
+
+**备注：推荐使用格式一**
+
+#### （2）数组动态初始化
+
+- ##### 数组初始化概述
+
+​		java中的数组必须先初始化，然后才能使用
+
+​		所谓初始化：就是为数组中的数组元素分配内存空间，并为每个数组元素赋值
+
+- ##### 数组初始化方式
+
+  分为**动态初始化**和**静态初始化**
+
+  **动态初始化**：初始化时只指定数组长度，由系统为数组分配初始值
+
+  格式：数据类型[] 变量名 = new 数据类型[数组长度]；
+
+  范例：int[] arr = new int[3];
+
+  ![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/动态初始化.png)
+
+  ![avatar](image\动态初始化.png)
+
+  ```java
+  public static void main(String[] args) {
+      int[] arr = new int[3];
+      /*
+      左边：
+          int:说明数组中的元素类型是int类型
+          []:说明这是一个数组
+          arr:这是数组的名称
+      右边：
+          new：为数组申请内存空间
+          int：说明数组中的元素类型是int类型
+           []:说明这是一个数组
+            3:数组长度，其实就是数组中的元素个数
+       */
+  }
+  ```
+
+#### （3）数组元素访问
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/数组元素的访问.png)
+
+![avatar](image\数组元素的访问.png)
+
+```java
+public static void main(String[] args) {
+    int[] arr = new int[3];
+    /*
+    左边：
+        int:说明数组中的元素类型是int类型
+        []:说明这是一个数组
+        arr:这是数组的名称
+    右边：
+        new：为数组申请内存空间
+        int：说明数组中的元素类型是int类型
+         []:说明这是一个数组
+          3:数组长度，其实就是数组中的元素个数
+     */
+    //输出数组名
+    System.out.println(arr);//[I@1b6d3586
+    
+    //输出数组中的元素
+    System.out.println(arr[0]);//输出0,系统为数组分配初始值
+    System.out.println(arr[1]);//输出0,系统为数组分配初始值
+    System.out.println(arr[2]);//输出0,系统为数组分配初始值
+}
+```
+
+#### （4）内存分配
+
+- **java中的内存分配**
+
+  java程序在运行时，需要在内存中分配空间。为了提高运算效率，就对空间进行了不同区域的划分，因为每一片区域都有特定的处理数据方式和内存管理方式。
+
+  ![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/java中内存分配.png)
+
+  ![avatar](image\java中内存分配.png)
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/java中的内存分配1.png)
+
+![avatar](image\java中的内存分配1.png)
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/java中的内存分配2.png)
+
+![avatar](image\java中的内存分配2.png)
+
+#### （5）单个数组内存图
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/单个数组内存图.png)
+
+![avatar](image\单个数组内存图.png)
+
+```java
+public static void main(String[] args) {
+        //定义一个数组
+        int[] arr = new int[3];
+        
+        //输出数组名及元素
+        System.out.println(arr);//输出[I@1b6d3586
+        System.out.println(arr[0]);//输出0
+        System.out.println(arr[1]);//输出0
+        System.out.println(arr[2]);//输出0
+        
+        //给数组中的元素赋值
+        arr[0] = 100;
+        arr[2] = 200;
+        
+        //再次输出数组名及元素
+        System.out.println(arr);//输出[I@1b6d3586
+        System.out.println(arr[0]);//输出100
+        System.out.println(arr[1]);//输出0
+        System.out.println(arr[2]);//输出200
+    }
+```
+
+#### （6）多个数组内存图
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/多个数组内存图.png)
+
+![avatar](image\多个数组内存图.png)
+
+```java
+public static void main(String[] args) {
+    //定义两个数组
+    int[] arr = new int[2];
+    int[] arr2 = new int[3];
+
+    //分别输出数组名及元素
+    System.out.println(arr);//输出内存地址：[I@1b6d3586
+    System.out.println(arr[0]);//输出0
+    System.out.println(arr[1]);//输出0
+
+    System.out.println(arr2);//输出内存地址：[I@4554617c
+    System.out.println(arr2[0]);//输出0
+    System.out.println(arr2[1]);//输出0
+    System.out.println(arr2[2]);//输出0
+
+    //分别给元素赋值
+    arr[0] = 100;
+    arr2[0] = 200;
+    arr2[2] = 300;
+
+    //分别再次输出两个数组名及元素
+    System.out.println(arr);//输出内存地址：[I@1b6d3586
+    System.out.println(arr[0]);//输出100
+    System.out.println(arr[1]);//输出0
+
+    System.out.println(arr2);//输出内存地址：[I@4554617c
+    System.out.println(arr2[0]);//输出200
+    System.out.println(arr2[1]);//输出0
+    System.out.println(arr2[2]);//输出300
+}
+```
+
+#### （7）多个数组指向相同内存图
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/多个数组指向相同内存.png)
+
+![avatar](image\多个数组指向相同内存.png)
+
+注意：**当两个数组指向相同内存时，任何一个数组修改堆内存的数据，另一个数组去访问时元素值也是发生改变的。**
+
+#### （8）数组静态初始化  
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/数组静态初始化.png)
+
+![avatar](image\数组静态初始化.png)
+
+推荐简化格式，虽然省略了new,但是仍然开辟了内存空间。
+
+```java
+public static void main(String[] args) {
+    //定义数组
+    int[] arr = {1,2,3};
+
+    //输出数组名
+    System.out.println(arr);//输出内存空间：[I@1b6d3586
+
+    //输出数组中的元素
+    System.out.println(arr[0]);//输出:1
+    System.out.println(arr[1]);//输出:2
+    System.out.println(arr[2]);//输出:3
+}
+```
+
+#### （9）数组操作的两个常见小问题
+
+- **索引越界**：访问了数组中不存在的索引对应的元素，造成索引越界问题（控制台输出：ArrayIndexOutOfBoundsException）
+- **空指针异常**：访问的数组已经不再指向堆内存的数据，造成空指针异常（控制台输出：NullPointerException）
+- null:空值，引用数据类型的默认值，表示不指向任何有效对象
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/索引越界.png)
+
+![avatar](image\索引越界.png)
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/空指针异常1.png)
+
+![avatar](image\空指针异常1.png)
+
+#### （10）遍历
+
+- **获取数组元素数量**
+
+  格式：数组名.length
+
+  范例：arr.length
+
+- **遍历通用格式**
+
+  ```java
+  int[] arr = {......};
+  for(int x=0;x<arr.length;x++){
+  	arr[x];
+  }
+  ```
+
+  ```java
+  public static void main(String[] args) {
+      //定义数组
+      int[] arr = {1,2,3,4,5};
+      //使用通用的遍历格式
+      for(int i =0;i<arr.length;i++){
+          System.out.println(arr[i]);
+      }
+  }
+  ```
+
+#### （11）获取最大值
+
+```java
+public static void main(String[] args) {
+    int[] arr = {1,3,6,9,5};
+    //定义一个变量，用于保存最大值（或最小值）
+    int max = arr[0];//取数组中第一个数据作为变量初始值
+    //与数组中剩余的数据逐个比对，每次比对将最大值保存到变量中
+    for(int x = 1;x<arr.length;x++){
+        if(arr[x]>max){
+            max=arr[x];
+        }
+    }
+    //循环结束后打印变量的值
+    System.out.println("最大值是:"+max);//9
+}
+```
+
+### 20.方法
