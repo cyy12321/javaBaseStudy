@@ -4,4 +4,7 @@
     <option name="FONT_FAMILY" value="Courier New" />
     <option name="LINE_SPACING" value="1.5" />
   </component>
+  <component name="EditorSettings">
+    <option name="USE_SOFT_WRAPS" value="" />
+  </component>
 </application>
