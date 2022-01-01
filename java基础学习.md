@@ -952,3 +952,87 @@ public static void main(String[] args) {
 ```
 
 ### 20.方法
+
+#### （1）方法概述
+
+**方法**（method)是将具有独立功能的代码快组织成为一个整体，使其具有特殊功能的代码集
+
+**注意**：
+
+方法必须先创建才可以使用，该过程称为方法定义
+
+方法创建后并不是直接运行的，需要手动使用后才执行，该过程称为方法调用
+
+#### （2）方法的定义和调用
+
+- **方法定义**
+
+  格式：
+
+```java
+public static void 方法名() {
+   //方法体
+}
+```
+
+​	  范例：
+
+```java
+public static void isEvenNumber() {
+   //方法体
+}
+```
+
+- **方法调用**
+
+格式：方法名();
+
+范例：isEvenNumber();
+
+**注意：**
+
+方法必须先定义后调用，否则程序将报错
+
+```java
+public static void main(String[] args) {
+    //调用方法
+    isEvenNumber();
+}
+//需求：定义一个方法，在方法中定义一个变量，判断该数据是否是偶数
+public static void isEvenNumber() {
+    int num = 10;
+    if (num % 2 == 0) {
+        System.out.println(true);
+    } else {
+        System.out.println(false);
+    }
+}
+```
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/方法调用过程.png)
+
+![avatar](image\方法调用过程.png)
+
+####  （3）方法练习
+
+需求：设计一个方法用于打印两个数中的较大值
+
+```java
+public static void main(String[] args) {
+    //调用方法
+    getMax();
+}
+//需求：设计一个方法用于打印两个数中较大值
+//定义一个方法，用于打印两个数字中的较大数
+public static void getMax(){
+    //方法中定义两个变量，用于保存两个数字
+    int a=10;
+    int b = 20;
+    //使用分支语句分两种情况对两个数字的大小关系进行处理
+    if(a>b){
+        System.out.println(a);
+    }else{
+        System.out.println(b);
+    }
+}
+```
