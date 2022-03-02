@@ -406,3 +406,100 @@ public class StringTest001 {
     }
 }
 ```
+
+### 41.统计字符次数
+
+需求：键盘录入一个字符串，统计该字符串中大写字母字符，小写字母字符，数字字符出现的次数（不考虑其他字符）
+
+```java
+public class StringTest002 {
+    public static void main(String[] args) {
+        //需求：键盘录入一个字符串，统计该字符串中大写字母字符，小写字母字符，数字字符出现的次数（不考虑其他字符）        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入字符串：");
+        String s = sc.nextLine();
+        int smallCount = 0;
+        int bigCount = 0;
+        int digitCount = 0;
+        for(int i = 0;i<s.length();i++){
+            char c = s.charAt(i);
+            if(c>='a'&&c<='z'){
+                smallCount++;
+            }else if(c>='A'&&c<='Z'){
+                bigCount++;
+            }else {
+                digitCount++;
+            }
+        }
+        System.out.println("小写字母个数为:"+smallCount);
+        System.out.println("大写字母个数为:"+bigCount);
+        System.out.println("数字字符个数为:"+digitCount);
+    }
+}
+```
+
+### 42.拼接字符串
+
+需求：定义一个方法，把int数组中的数据按照指定的格式拼接成一个字符串返回，调用该方法，并在控制台输出结果。例如，数组为int[] arr={1,2,3},执行方法后的输出结果为：[1,2,3]
+
+```java
+public class StringTest003 {
+    public static void main(String[] args) {
+        //需求：定义一个方法，把int数组中的数据按照指定的格式拼接成一个字符串返回，调用该方法，并在控制台输出结果。
+        // 例如，数组为int[] arr={1,2,3},执行方法后的输出结果为：[1,2,3]
+        int[]  arr={1,2,3};
+        String s = "[";
+        for(int i = 0;i<arr.length;i++){
+            if(i!=arr.length-1){
+                s+=arr[i]+",";
+            }else {
+                s+=arr[i];
+            }
+        }
+        s=s+"]";
+        System.out.println("s:"+s);
+    }
+}
+```
+
+### 43、字符串反转
+
+需求：定义一个方法，实现字符串反转。键盘录入一个字符串，调用该方法后，在控制台输出结果。例如：键盘录入abc,输出结果cba
+
+```java
+public class StringTest004 {
+    public static void main(String[] args) {
+        //需求：定义一个方法，实现字符串反转。键盘录入一个字符串，调用该方法后，在控制台输出结果。
+        // 例如：键盘录入abc,输出结果cba
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入字符串：");
+        String str = sc.nextLine();
+        String fs = fanZ(str);
+        System.out.println("反转后的结果为："+fs);
+    }
+
+    public static String fanZ(String s) {
+        String fz = "";
+        for (int i = s.length() - 1; i >= 0; i--) {
+            fz += s.charAt(i);
+        }
+        return fz;
+    }
+}
+```
+
+### 44、StringBuilder
+
+StringBuilder是一个可变的字符串类，我们可以把它看成是一个容器，这里的可变指的是StringBuilder对象中的内容是可变的
+
+String和StringBuilder的区别：
+
+- String:内容是不可变的
+- StringBuilder：内容是可变的
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/StringBuilder.png)
+
+![avatar](image\StringBuilder.png)
+
+### 	45、StringBuilder构造方法
+
