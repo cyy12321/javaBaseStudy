@@ -581,7 +581,7 @@ public static void main(String[] args) {
 
 ![avatar](image\三种循环的区别.png)
 
-### 15.跳转控制语句
+### 15.跳转控制语句(continue/break)
 
 **continue**用于循环中，基于条件控制，跳过某次循环体内容的执行，继续下一次的执行
 
@@ -717,7 +717,7 @@ while (true){
 
   分为**动态初始化**和**静态初始化**
 
-  **动态初始化**：初始化时只指定数组长度，由系统为数组分配初始值
+  **动态初始化**：**初始化时只指定数组长度，由系统为数组分配初始值**
 
   格式：数据类型[] 变量名 = new 数据类型[数组长度]；
 
@@ -1036,3 +1036,444 @@ public static void getMax(){
     }
 }
 ```
+
+#### （4）带参数方法的定义和调用
+
+**注意：**
+
+- 方法定义时，参数中的**数据类型**与**变量名**都不能缺少，缺少任意一个程序将报错
+- 方法定义时，多个参数之间使用逗号（，）分隔
+
+```java
+格式：public static void 方法名(参数){... ...}
+格式（单个参数）：public static void 方法名(数据类型 变量名){... ...}
+范例（单个参数）：public static void isEventNumber(数据类型 变量名){... ...}
+格式（多个参数）：public static void 方法名(数据类型 变量名1,数据类型 变量名2,......){... ...}
+范例（多个参数）：public static void getMax(int number1,int number1){... ...}
+```
+
+```java
+方法调用格式：方法名（参数）
+
+格式（单个参数）：方法名（变量名/常量值）；
+范例（单个参数）：isEventNumber(5);
+
+格式（多个参数）：方法名（变量名1/常量值1，变量名2/常量值2）；
+范例（多个参数）：getMax(5,6)；
+```
+
+**注意：**
+
+- 方法调用时，参数的数量与类型必须与方法定义中的设置相匹配，否则程序将报错
+
+#### （5）形参和实参
+
+形参：方法定义中的参数
+
+​			等同于变量定义格式，例如：int number 
+
+实参：方法调用中的参数
+
+​			等同于使用变量或常量，例如：10   number
+
+#### （6）带返回值方法定义和调用
+
+- 带返回值方法定义格式：
+
+```java
+public static 数据类型 方法名(参数){
+    return 数据;
+}
+```
+
+注意：方法定义时**return后面的返回值**与方法定义上的**数据类型**要匹配，否则程序将报错
+
+- 带返回值方法调用格式1：方法名(参数);   范例：isEvenNumber(5);
+
+- 带返回值方法调用格式2：**数据类型  变量名** = 方法名(参数); 范例：boolean flag =  isEvenNumber(5);
+
+注意：
+
+方法的返回值通常会使用变量接收，否则该返回值将无意义
+
+```java
+public static void main(String[] args) {
+    //调用方法
+    int max = getMax(10,20);//使用变量保存
+    System.out.println(max);
+    
+    System.out.println(getMax(10,20));//直接打印结果
+}
+//定义一个方法可以获取两个数的较大值，数据来源于参数
+public static  int getMax(int a,int b){
+    if(a>b){
+        return a;
+    }else{
+        return b;
+    }
+}
+```
+
+#### （7）方法注意事项
+
+- 方法不能嵌套定义
+
+- void表示无返回值，可以省略return,也可以单独书写return，后面不加数据
+- 方法执行到return就结束了，不会往下执行，下面的语句书写会报错
+
+#### （8）方法通用格式
+
+- 格式：public static **返回值类型** 方法名(参数){
+
+​					方法体；
+
+​					return **数据**；
+
+}
+
+- 定义方法时，要做到两个两个明确
+
+    (一）明确返回值类型，主要明确方法操作完毕之后是否有数据返回，如果没有，写void;如果有，写对应的数据类型，
+
+  （二）明确参数：主要是明确参数的类型和数量
+
+- 调用方法时,void类型的方法，直接调用即可；非void类型的方法，推荐用变量接收调用
+
+- public static	修饰符
+
+- 返回值类型	  方法操作完毕之后返回的数据的数据类型
+
+  ​						  如果方法操作完毕，没有数据返回，这里写void；而且方法体一般不写return				
+
+- 方法名			  调用方法时候使用的标识	
+
+- 参数 				 由数据类型和变量名组成，多个参数用逗号隔开
+
+- 方法体 			 完成功能的代码块
+
+- return 			 如果方法操作完毕，有数据返回，用于把数据返回给调用者
+
+#### （9）方法重载
+
+方法重载指同一个类中定义的多个方法之间的关系，满足下列条件的多个方法相互构成重载
+
+- 多个方法在同一个类中
+
+- 多个方法具有**相同的方法名**
+
+- 多个方法的**参数不相同**（**类型不同**或者**数量不同**）
+
+- **重载仅对应方法的定义**，与方法的调用无关，调用方式参照标准格式，在调用的时候，java虚拟机会通过参数的不同来区分同名的方法
+
+- **重载仅针对同一个类中方法的名称与参数进行识别**，与返回值无关，换句话说不能通过返回值来判定两个方法是否相互构成重载
+
+  需求：使用方法重载的思想，设计比较两个整数是否相同的方法，兼容全整数类型（byte,short,int,long)
+
+```java
+public class ChongzaiTest {
+    public static void main(String[] args) {
+        System.out.println(compare(10,20));
+        System.out.println(compare((byte)10,(byte)20));
+        System.out.println(compare((short)10,(short)20));
+        System.out.println(compare(10L,20L));
+    }
+    //int
+    public static boolean compare(int a,int b){
+        System.out.println("int");
+        return a==b;
+    }
+    //byte
+    public static boolean compare(byte a,byte b){
+        System.out.println("byte");
+        return a==b;
+    }
+    //short
+    public static boolean compare(short a,short b){
+        System.out.println("short");
+        return a==b;
+    }
+    //long
+    public static boolean compare(long a,long b){
+        System.out.println("long");
+        return a==b;
+    }
+}
+```
+
+#### （10）方法参数传递
+
+- **基本类型**
+
+  对于**基本数据类型**的参数，**形式参数的改变，不影响实际参数的值** 
+
+  ![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/方法参数传递-基本数据类型.png)
+
+  ![avatar](image\方法参数传递-基本数据类型.png)
+
+```java
+public static void main(String[] args) {
+    int number = 100;
+    System.out.println("调用change方法前："+number);//调用change方法前：100
+    change(number);
+    System.out.println("调用change方法后："+number);//调用change方法后：100
+}
+public static void change(int number){
+    number = 200;
+}
+```
+
+- **引用类型**
+
+  对于**引用类型**的参数，**形式参数的改变，影响实际参数的值**
+
+  ![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/方法参数传递-引用类型.png)
+
+  ![avatar](image\方法参数传递-引用类型.png)
+
+- **数组遍历**
+
+  ```java
+  public static void main(String[] args) {
+          //设计一个方法用于数组遍历,要求遍历的结果是在一行上的。例如:[11,22,33,44,55]
+          int[] arr01 = {11,22,33,44,55};//定义一个数组，用静态初始化完成数组元素初始化
+          String s = bianliArr(arr01);//调用方法，用变量接收返回结果
+          System.out.println(s);
+      }
+  public static String  bianliArr(int[] arr01){//返回值类型:String  参数:int[] arr
+          String s = "[";
+          for(int i = 0;i<arr01.length;i++){
+              if(i==arr01.length-1){
+                  s+=arr01[i];
+              }else{
+                  s+=arr01[i]+",";
+              }
+          }
+          s=s+"]";
+          return s;
+      }
+  ```
+
+- **数组最大值**
+
+```java
+public static void main(String[] args) {
+    //设计一个方法用于获取数组中元素的最大值，调用方法并输出结果
+    int[] arr02 = {1,3,6,3,2,1,8,5};
+    int max = getMax(arr02);//调用获取最大值方法，用变量接收返回值结果
+    System.out.println(max);
+}
+public static  int getMax(int[] arr){ //返回值类型:int  参数:int[] arr
+    int max = arr[0];
+    for(int x = 0;x<arr.length;x++){
+        if(max<arr[x]){
+            max =  arr[x];
+        }
+    }
+    return max;
+}
+```
+
+### 21.Debug使用
+
+如果数据来源于键盘输入，一定要记住输入数据，不然就不能继续往下查看了（F7)
+
+### 22.逢7过练习
+
+```java
+public static void main(String[] args) {
+        //1-100之间的满足逢7必过规则的数据(包含7或者是7的倍数）
+        String s = "";
+        int[] arr = {};
+        for(int i = 1;i<=100;i++){
+            if(i%7==0){
+                s+=i+" ";
+                continue;//跳出本次本次循环，继续下次循环[避免和包含7的重复输出]
+            }
+            if((i+"").contains("7")){
+                s+=i+" ";
+                continue;
+            }
+        }
+        System.out.println(s);
+    }
+```
+
+### 23.生兔子
+
+```java
+//有一对兔子，从出生后第三个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问第20个月的兔子对数是多少
+/*第1个月：  1
+  第2个月：  1
+  第3个月：  2
+  第4个月：  3
+  第5个月：  5*/
+public static void main(String[] args) {
+    //为了存储多个月的兔子对数，定义一个数组，用哪个动态初始化完成数组元素的初始化，数组长度为20
+    int[] arr = new int[20];
+
+    //第1个月和第2个月兔子的对数已知，都是1
+    arr[0]=1;
+    arr[1]=1;
+    for(int i = 2;i<arr.length;i++){
+        arr[i]=arr[i-2]+arr[i-1];
+    }
+    //输出数组中最后一个元素的值=第20个月兔子对数
+    System.out.println("第二十个月的兔子的对数是："+arr[19]);
+}
+```
+
+### 24.百钱百鸡
+
+```java
+//需求：在我国古代数学张丘建在《算经》一书中提出的数学问题：
+//鸡翁一值钱五，鸡母一值钱三，鸡雏三值钱一，
+//百钱买百鸡，问鸡翁、鸡母、鸡雏各几何？
+/*
+鸡翁：x  5x
+鸡母；y  3y
+鸡雏：z  1/3z
+x+y+z=100
+5x+3y+1/3z=100
+0<=x<=20
+0<=y<=33
+0<=z<=100
+*/
+public class Chicken {
+    public static void main(String[] args) {
+        for(int x=0;x<=20;x++){//鸡翁
+            for(int y=0;y<=33;y++){//鸡母
+                int z = 100-x-y;//鸡雏
+                if(z%3==0&&5*x+3*y+z/3==100){
+                    System.out.println(x+","+y+","+z);
+                }
+            }
+        }
+    }
+}
+```
+
+### 25.数组元素求和
+
+```java
+public static void main(String[] args) {
+    /*有这样的一个数组，元素是（68, 27, 95, 88, 171, 996, 51, 210）,求出数组中满足要求的元素和，要求是：求和的元素
+    个位和十位都不能是7，并且只能是偶数*/
+    int[] arr={68, 27, 95, 88, 171, 996, 51, 210};
+    int sum = 0;
+    for(int i = 0;i<arr.length;i++){
+       int ge = arr[i]%10;
+       int shi = arr[i]%10/10;
+       if(ge!=7&&shi!=7&&arr[i]%2==0){
+           sum += arr[i];
+       }
+    }
+    System.out.println("sum:"+sum);
+}
+```
+
+### 26.数组内容是否相同
+
+```java
+public static void main(String[] args) {
+    //定义两个数组，用于比较两个数组的内容是否相同
+    int[] arr1={11,22,33,44,55};
+    int[] arr2={11,22,33,44,55};
+    boolean flag = compare(arr1,arr2);
+    System.out.println(flag);
+}
+public static boolean compare(int[] arr1,int[] arr2) {
+    //首先比较数组长度，如果长度不相同，内容肯定不相同，返回false
+    if (arr1.length != arr2.length) {
+        return false;
+    }
+    //其次遍历数组中的每一个元素,只要有元素不相同，则返回false
+    for(int x = 0;x<arr1.length;x++){
+        if(arr1[x]!=arr2[x]){
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+27.反转
+
+```java
+//已知一个数组arr={19,28,37,46,50};用程序实现把数组中的元素值交换
+//交换后的数组arr={50,46,37,28,19};并在控制台输出交换后的数组元素
+public class FanZhuan {
+    public static void main(String[] args) {
+        int[] arr={19,28,37,46,50};
+        reserve(arr);//调用反转的方法
+        printArr(arr);//遍历数组
+    }
+    public static void reserve(int[] arr) {
+        //循环遍历数组，初始化语句定义两个索引变量，判断条件：开始索引<=结束索引
+        for(int start=0,end = arr.length-1;start<=end;start++,end--){
+            int temp = arr[start];
+            arr[start]=arr[end];
+            arr[end]= temp;
+        }
+    }
+    public static void printArr(int[] arr){
+        System.out.print("[");
+        for(int i = 0;i<arr.length;i++){
+            if(i==arr.length-1){
+                System.out.print(arr[i]);//最后一个元素，不加“，”
+            }else{
+                System.out.print(arr[i]+",");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```
+
+### 27.类和对象
+
+类是对现实生活中一类具有共同属性和行为的事物的抽象
+
+类的特点：
+
+（1）类是对象的数据类型
+
+（2）类是具有相同属性和行为的一组对象的集合
+
+对象是能够看得到摸得着的真实存在的实体
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/类和对象.png)
+
+![avatar](image\类和对象.png)
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/类的定义.png)
+
+![avatar](image\类的定义.png)
+
+**创建对象**
+
+格式：类名 对象名 = new 类名（）；
+
+范例：Phone p = new Phone();
+
+### 28.单个对象内存图
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/单个对象内存图.png)
+
+![avatar](image\单个对象内存图.png)
+
+方法执行完成后会从栈内存消失
+
+### 29.多个对象内存图
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/单个对象内存图.png)
+
+![avatar](image\多个对象内存图.png)
+
+### 30.多个对象指向相同
+
+![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/多个对象指向相同.png)
+
+![avatar](image\多个对象指向相同.png)
+
+
+
