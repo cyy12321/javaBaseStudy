@@ -438,7 +438,7 @@ public class StringTest002 {
 }
 ```
 
-### 42.拼接字符串
+### 42.拼接字符串（String）
 
 需求：定义一个方法，把int数组中的数据按照指定的格式拼接成一个字符串返回，调用该方法，并在控制台输出结果。例如，数组为int[] arr={1,2,3},执行方法后的输出结果为：[1,2,3]
 
@@ -501,5 +501,87 @@ String和StringBuilder的区别：
 
 ![avatar](image\StringBuilder.png)
 
-### 	45、StringBuilder构造方法
+### 	45、StringBuilder添加和反转
+
+```java
+JDK9 API:public StringBuilder append(任意类型):添加数据，并返回对象本身
+	     public StringBuilder reverse():返回相反的字符序列
+```
+
+```java
+public class StringBuildDemo01 {
+    public static void main(String[] args) {
+        StringBuilder sb01 = new StringBuilder();
+        //public StringBuilder append(任意类型):添加数据，并返回对象本身
+        //方法一：
+        sb01.append("hello");
+        sb01.append("world");
+        sb01.append(100);
+        System.out.println("sb01:"+sb01);//sb01:helloworld100
+        //方法二：链式编程
+        StringBuilder sb02 = new StringBuilder();
+        sb02.append("a").append("c").append(6);
+        System.out.println("sb02:"+sb02);//sb02:ac6
+        //反转
+        //public StringBuilder reverse():返回相反的字符序列
+        sb01.reverse();
+        System.out.println(sb01);//001dlrowolleh
+    }
+}
+```
+
+### 46、StringBuilder和String相互转换
+
+（1）StringBuilder转换为String
+
+public String toString():通过toString()就可以实现把StringBuilder转换为String
+
+（2）String转换为StringBuilder
+
+public StringBuilder(String s):通过构造方法就可以实现把String转换为StringBuilder
+
+```java
+public class StringBuilderDemo02 {
+    public static void main(String[] args) {
+        String s = "hello";
+        StringBuilder sb = new StringBuilder(s);
+        System.out.println("String转换为StringBuilder后的值为:"+sb);//String转换为StringBuilder后的值为:hello
+    }
+}
+```
+
+### 47.拼接字符串（StringBuilder）
+
+需求：定义一个方法，把int数组中的数据按照指定的格式拼接成一个字符串返回，调用该方法，并在控制台输出结果。例如，数组为int[] arr={1,2,3},执行方法后的输出结果为：[1,2,3]
+
+```java
+public class StringBuilderDemo02 {
+    public static void main(String[] args) {
+        //需求：定义一个方法，把int数组中的数据按照指定的格式拼接成一个字符串返回，调用该方法，
+        // 并在控制台输出结果。例如，数组为int[] arr={1,2,3},执行方法后的输出结果为：[1,2,3]
+        int[] arr = {1, 2, 3};
+        //调用方法，用一个变量接收结果
+        String s = arrayToString(arr);
+        System.out.println("s:" + s);
+    }
+    
+    /*两个明确：
+    返回值类型：String;
+    参数：int[] arr*/
+    public static String arrayToString(int[] arr) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < arr.length; i++) {
+            if (i == arr.length - 1) {//最后一个
+                sb.append(arr[i]);
+            } else {//非最后一个
+                sb.append(arr[i]).append(",");
+            }
+        }
+        sb.append("]");
+        String s = sb.toString();//StringBuilder转换为String
+        return s;
+    }
+}
+```
 
