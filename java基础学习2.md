@@ -30,9 +30,11 @@ public class Student {
     public void setName(String n){//局部变量(方法声明上)
         name = n;//局部变量(方法内)
     }
+    //成员方法
     public String getName(){
         return name;
     }
+    //成员方法
     public void setAge(int a){
         age = a;
     }
@@ -579,7 +581,8 @@ public class StringBuilderDemo02 {
             }
         }
         sb.append("]");
-        String s = sb.toString();//StringBuilder转换为String
+        System.out.println(sb);//测试打印结果：[1,2,3]
+        String s = sb.toString();//StringBuilder转换为String--因为返回值类型为String
         return s;
     }
 }

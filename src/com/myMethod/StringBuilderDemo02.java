@@ -23,6 +23,7 @@ public class StringBuilderDemo02 {
             }
         }
         sb.append("]");
+        System.out.println(sb);
         String s = sb.toString();
         return s;
     }
