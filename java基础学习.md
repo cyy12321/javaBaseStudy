@@ -4,7 +4,7 @@
 
 ![Image text](https://github.com/cyy12321/javaBaseStudy/blob/master/image/常量分类.png)
 
-![avatar](image/常量分类.png)
+![avatar](image/常量分类.jpg)
 
 空常量不能被直接输出，其他类型的常量可以直接输出
 
